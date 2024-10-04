@@ -1,6 +1,6 @@
 {
     "name": "react-ifz",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "React wrapper conditions. Simple wrapper",
     "main": "build/index.js",
     "module": "build/index.esm.js",
