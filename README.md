@@ -11,7 +11,6 @@
 ---
 ## Description
 + React wrapper conditions
-+ Remove duplicate condition
 
 ## Installation
 
@@ -24,7 +23,7 @@ npm i react-ifz
 
 #####
 ```js
-import { Case, Else, ElseIf, If, Switch, Then, When } from 'react-ifz';
+import { Case, Else, ElseIf, If, Switch, Then, When, Default } from 'react-ifz';
 
 const [statez, setStatez] = useState(1);
 
@@ -32,28 +31,28 @@ const [statez, setStatez] = useState(1);
 
 // render anything in the state
 <When condition={statez === 1}>
-    statez === 1: when
+    when: statez === 1
 </When>
 
 // render anything in the state
 <If condition={statez === 1}>
-    statez === 1: if
+    if: statez === 1
 </If>
 
 // render with condition
 <If condition={statez === 2}>
-    <Then>statez === 2: if</Then>
+    <Then>if: statez === 2</Then>
 
     <ElseIf condition={statez === 3}>
-        statez === 3: else-if
+        statez === 3
     </ElseIf>
 
     <ElseIf condition={statez === 4}>
-        statez === 4: else-if
+        statez === 4
     </ElseIf>
 
     <ElseIf condition={statez === 5}>
-        statez === 5: else-if
+        statez === 5
     </ElseIf>
 
     <Else>state other 2</Else>
@@ -66,9 +65,11 @@ const [statez, setStatez] = useState(1);
     <Case condition={statez === 8}>
         Case 8
     </Case>
-    {/* <Case condition={statez === 9}>Case === 9</Case>
+    {/*
+    <Case condition={statez === 9}>Case === 9</Case>
     <Case condition={statez === 10}>Case === 10</Case>
-    <Case condition={statez === 11}>Case === 11</Case> */}
+    <Case condition={statez === 11}>Case === 11</Case>
+    */}
 </Switch>
 
 ```
@@ -78,12 +79,17 @@ const [statez, setStatez] = useState(1);
 ```js
 // => dont render this condition
 <If condition={statez === 2}>
-    <ElseIf condition={statez === 2}>statez === 2: else-if</ElseIf>
-    <Else>state other 2</Else>
+    <ElseIf condition={statez === 2}>
+        statez === 2: else-if // not rendered
+    </ElseIf>
+
+    <Else>
+        state other 2  // => Render if condtion !==2 and elseIf not true
+    </Else>
 </If>
 
 <If condition={statez === 2}>
-    <Else>state other 2</Else>
+    <Else>state other 2</Else>  // => Render if condtion !==2
 </If>
 
 //***** */

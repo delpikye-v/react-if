@@ -1,33 +1,34 @@
 import React from 'react';
-import type { IConditionProps, IConditionWithFuncProps } from './types';
+import { BooleanResult } from './types';
+import { IConditionProps, IConditionWithFuncProps } from './types';
 declare global {
     let __DEV__: boolean;
 }
-/** A shorthand for
+/**
+ * If the condition is true, it renders the children. Otherwise, it returns null.
  *
- * <If condition={...}>
- *     <Then>
- *         { ... }
- *     </Then>
- * </If>
+ * <When condition={...}>
+ *  {children}
+ * </When>
  */
 export declare const When: React.FC<IConditionWithFuncProps>;
 /**
- * If condition evaluates to true, renders the `<Then />` block will be rendered,
- * otherwise renders the `<Else />` block. Either block may be omitted.
+ * It checks if the condition is true.
+ * It then parses its children using the parseIfElse function, which determines the first matching child block (Then, ElseIf, or Else) based on the condition.
+ * If the condition is true and there's only one child block, it renders all children as-is.
+ * Otherwise, it renders only the first matching child block.
  *
  * <If condition={...}>
  *  <Then>{this is if}</Then>
  *  <ElseIf condition={...}></ElseIf>
+ *  <ElseIf condition={...}></ElseIf>
  *  <Else></Else>
  * </If>
- *
- * This component can contain any number of `<Then />`, `<ElseIf />` and `<Else />` blocks,
- * but only the first block of the right type (either Then or Else, depending on the condition) will be rendered.
  */
 export declare const If: React.FC<IConditionWithFuncProps>;
 /**
- * It will render the first matching `<Case />`, or the first encountered `<Default />` (or `null`).
+ * It renders the first child that matches a condition or the first Default child if no conditions are met.
+ * If there are no children, it returns null.
  *
  * <Switch>
  *  <Case condition={...}></Case>
@@ -36,3 +37,12 @@ export declare const If: React.FC<IConditionWithFuncProps>;
  * </Switch>
  */
 export declare const Switch: React.FC<IConditionProps>;
+/**
+ * Executes a condition and returns the result.
+ * If the condition is a function, it calls the function and returns the result.
+ * If the condition is not a function, it returns the condition as-is.
+ *
+ * @param condition The condition to check
+ * @returns The result of the condition
+ */
+export declare function execConditions(condition: BooleanResult | ((...args: unknown[]) => BooleanResult)): boolean;
