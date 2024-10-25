@@ -1,9 +1,6 @@
 import React from 'react';
 import { BooleanResult } from './types';
-import { IConditionProps, IConditionWithFuncProps } from './types';
-declare global {
-    let __DEV__: boolean;
-}
+import { IConditionWithFuncProps } from './types';
 /**
  * If the condition is true, it renders the children. Otherwise, it returns null.
  *
@@ -36,7 +33,7 @@ export declare const If: React.FC<IConditionWithFuncProps>;
  *  <Default></Default>
  * </Switch>
  */
-export declare const Switch: React.FC<IConditionProps>;
+export declare const Switch: React.FC<IConditionWithFuncProps>;
 /**
  * Executes a condition and returns the result.
  * If the condition is a function, it calls the function and returns the result.
@@ -46,3 +43,4 @@ export declare const Switch: React.FC<IConditionProps>;
  * @returns The result of the condition
  */
 export declare function execConditions(condition: BooleanResult | ((...args: unknown[]) => BooleanResult)): boolean;
+export declare function isNil(value: BooleanResult): boolean;

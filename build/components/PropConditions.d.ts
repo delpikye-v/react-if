@@ -22,7 +22,7 @@ export declare const IfCondition: React.FC<IConditionWithFuncProps>;
  * </IfElseCondition>
  *
  */
-export declare const IfElseCondition: React.FC<IConditionElseWithFuncProps>;
+export declare const RenderIfElse: React.FC<IConditionElseWithFuncProps>;
 /**
  * If condition evaluates to true. Either block may be omitted.
  *

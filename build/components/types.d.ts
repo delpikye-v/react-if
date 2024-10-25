@@ -4,7 +4,7 @@ export interface IConditionProps {
     children?: React.ReactNode | JSX.Element | string;
 }
 export interface IConditionWithFuncProps extends IConditionProps {
-    condition: (() => BooleanResult) | BooleanResult;
+    condition?: (() => BooleanResult) | BooleanResult;
 }
 export interface IConditionElseWithFuncProps extends IConditionWithFuncProps {
     elseChildren?: React.ReactNode | JSX.Element | string;

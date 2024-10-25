@@ -6,11 +6,17 @@
     <b><a href="https://codesandbox.io/p/sandbox/2xn6yw">LIVE EXAMPLE</a></b>
 </div>
 
-[![NPM](https://img.shields.io/npm/v/react-ifz.svg)](https://www.npmjs.com/package/react-ifz) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+<br />
+
+[![NPM](https://img.shields.io/npm/v/react-ifz.svg)](https://www.npmjs.com/package/react-ifz)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+![Downloads](https://img.shields.io/npm/dt/react-ifz.svg)
 
 ---
 ## Description
 + React wrapper conditions
++ If/ElseIf/Else
++ Switch/Case
 
 ## Installation
 
@@ -29,17 +35,19 @@ const [statez, setStatez] = useState(1);
 
 <button onClick={() => setStatez(statez + 1)}>Click</button>
 
-// render anything in the state
+// Single => should use this instead of <If />
 <When condition={statez === 1}>
     when: statez === 1
 </When>
 
-// render anything in the state
+// ****************************************************************
+// ****************************************************************
+// ****************************************************************
+
 <If condition={statez === 1}>
     if: statez === 1
 </If>
 
-// render with condition
 <If condition={statez === 2}>
     <Then>if: statez === 2</Then>
 
@@ -55,9 +63,12 @@ const [statez, setStatez] = useState(1);
         statez === 5
     </ElseIf>
 
-    <Else>state other 2</Else>
+    <Else>state other any</Else>
 </If>
 
+// ****************************************************************
+// ****************************************************************
+// ****************************************************************
 <Switch>
     <Case condition={statez === 7}>
         Case 7
@@ -69,7 +80,24 @@ const [statez, setStatez] = useState(1);
     <Case condition={statez === 9}>Case === 9</Case>
     <Case condition={statez === 10}>Case === 10</Case>
     <Case condition={statez === 11}>Case === 11</Case>
+    {/* <Default /> */}
     */}
+</Switch>
+
+// ****************************************************************
+<Switch condition={prop.value}>
+    <Case condition={7}>
+        Case 7
+    </Case>
+    <Case condition={8}>
+        Case 8
+    </Case>
+    {/*
+    <Case condition={9}>Case === 9</Case>
+    <Case condition={10}>Case === 10</Case>
+    <Case condition={11}>Case === 11</Case>
+    */}
+    {/* <Default /> */}
 </Switch>
 
 ```
@@ -77,7 +105,7 @@ const [statez, setStatez] = useState(1);
 
 ## Note
 ```js
-// => dont render this condition
+// => you should not write condition like this, even if it is supported.
 <If condition={statez === 2}>
     <ElseIf condition={statez === 2}>
         statez === 2: else-if // not rendered
@@ -93,7 +121,8 @@ const [statez, setStatez] = useState(1);
 </If>
 
 //***** */
-<Switch> support tag: but you don't need to use it.
+// support tag: but you should not use it.
+<Switch>
 ```
 
 ## License
